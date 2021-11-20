@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 03:23 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Waktu pembuatan: 20 Nov 2021 pada 11.11
+-- Versi server: 10.4.20-MariaDB
+-- Versi PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,62 +18,45 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `forumapp`
+-- Database: `simulasi_forum`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `comments`
 --
 
-CREATE TABLE `categories` (
-  `cat_id` int(8) NOT NULL,
-  `cat_name` varchar(255) NOT NULL,
-  `cat_description` varchar(255) NOT NULL
+CREATE TABLE `comments` (
+  `id_comments` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL,
+  `id_user` char(20) NOT NULL,
+  `comments` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Struktur dari tabel `postingan`
 --
 
-CREATE TABLE `posts` (
-  `post_id` int(8) NOT NULL,
-  `post_content` text NOT NULL,
-  `post_date` datetime NOT NULL,
-  `post_topic` int(8) NOT NULL,
-  `post_by` int(8) NOT NULL
+CREATE TABLE `postingan` (
+  `id_post` int(11) NOT NULL,
+  `id_user` char(20) NOT NULL,
+  `post` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `topics`
+-- Struktur dari tabel `user`
 --
 
-CREATE TABLE `topics` (
-  `topic_id` int(8) NOT NULL,
-  `topic_subject` varchar(255) NOT NULL,
-  `topic_date` datetime NOT NULL,
-  `topic_cat` int(8) NOT NULL,
-  `topic_by` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `user_id` int(8) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
-  `user_pass` varchar(255) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `user_date` datetime NOT NULL,
-  `user_level` int(8) NOT NULL
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `id_user` char(20) NOT NULL,
+  `username` char(20) NOT NULL,
+  `password` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -81,58 +64,65 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `comments`
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`cat_id`),
-  ADD UNIQUE KEY `cat_name_unique` (`cat_name`);
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id_comments`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_post` (`id_post`);
 
 --
--- Indexes for table `posts`
+-- Indeks untuk tabel `postingan`
 --
-ALTER TABLE `posts`
-  ADD PRIMARY KEY (`post_id`);
+ALTER TABLE `postingan`
+  ADD UNIQUE KEY `id_post` (`id_post`),
+  ADD KEY `postingan_ibfk_1` (`id_user`);
 
 --
--- Indexes for table `topics`
+-- Indeks untuk tabel `user`
 --
-ALTER TABLE `topics`
-  ADD PRIMARY KEY (`topic_id`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `user_name_unique` (`user_name`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `comments`
 --
-ALTER TABLE `categories`
-  MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `comments`
+  MODIFY `id_comments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT untuk tabel `postingan`
 --
-ALTER TABLE `posts`
-  MODIFY `post_id` int(8) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `postingan`
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `topics`
+-- AUTO_INCREMENT untuk tabel `user`
 --
-ALTER TABLE `topics`
-  MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `users`
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
-ALTER TABLE `users`
-  MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`id_post`) REFERENCES `postingan` (`id_post`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `postingan`
+--
+ALTER TABLE `postingan`
+  ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

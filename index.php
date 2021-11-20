@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'koneksi.php';
+if (!isset($_SESSION['masuk'])) {
+    header('Location: login.php');
+    exit;
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
