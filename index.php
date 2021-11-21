@@ -54,7 +54,7 @@ if (isset($_POST['cari'])) {
             ?>
             <h4><?php echo $user_result['username'] ?></h4>
             <p><?php echo $data['post'] ?></p>
-            <img src="image/<?php $data['gambar'] ?>" alt="">
+            <img src="image/<?php echo $data['gambar'] ?>" alt="">
             <h5>Komentar :</h5>
             <?php
             $id_post = $data['id_post'];

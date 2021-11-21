@@ -2,7 +2,7 @@
 include '../koneksi.php';
 session_start();
 if (!isset($_SESSION['masuk'])) {
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit;
 }
 if (isset($_POST['kirim'])) {
@@ -14,10 +14,10 @@ if (isset($_POST['kirim'])) {
     header('Location: ./#' . $id_post);
 }
 $id_user = $_SESSION['masuk'];
-$query = mysqli_query($conn, "SELECT * FROM postingan WHERE id_user='$id_user'");
+$query = mysqli_query($conn, "SELECT * FROM postingan WHERE id_user='$id_user' ORDER BY id_post DESC");
 if (isset($_POST['cari'])) {
     $key = $_POST['key'];
-    $query = mysqli_query($conn, "SELECT * FROM postingan WHERE post LIKE '%$key%' AND id_user='$id_user'");
+    $query = mysqli_query($conn, "SELECT * FROM postingan WHERE post LIKE '%$key%' AND id_user='$id_user' ORDER BY id_post DESC");
 }
 ?>
 <!doctype html>
@@ -50,13 +50,14 @@ if (isset($_POST['cari'])) {
             $getUser = $data['id_user'];
             ?>
             <a href="ubah.php?id_post=<?php echo $data['id_post'] ?>" class="text-white">Ubah</a>
+            <a href="hapus.php?id_post=<?php echo $data['id_post'] ?>" class="text-white">Hapus</a>
             <?php
             $query_user = mysqli_query($conn, "SELECT username FROM user WHERE id_user='$getUser'");
             $user_result = mysqli_fetch_assoc($query_user);
             ?>
             <h4><?php echo $user_result['username'] ?></h4>
             <p><?php echo $data['post'] ?></p>
-            <img src="../image/<?php $data['gambar'] ?>" alt="">
+            <img src="../image/<?php echo $data['gambar'] ?>" alt="" width="100%">
             <h5>Komentar :</h5>
             <?php
             $id_post = $data['id_post'];
