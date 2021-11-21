@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2021 at 05:44 AM
+-- Generation Time: Nov 21, 2021 at 08:47 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -34,21 +34,6 @@ CREATE TABLE `comments` (
   `comments` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id_comments`, `id_post`, `id_user`, `comments`) VALUES
-(34, 30, 'ID002', 'Hallo Bro'),
-(35, 30, 'ID001', 'Hallo Juga'),
-(36, 32, 'ID002', 'Hallo Guys'),
-(38, 31, 'ID001', 'test'),
-(39, 31, 'ID0007', 'TEst'),
-(40, 32, 'ID0007', 'Hello'),
-(41, 31, 'ID0007', 'Test'),
-(42, 31, 'ID0007', 'Test Test'),
-(43, 32, 'ID0007', 'Hiii');
-
 -- --------------------------------------------------------
 
 --
@@ -61,15 +46,6 @@ CREATE TABLE `postingan` (
   `post` text NOT NULL,
   `gambar` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `postingan`
---
-
-INSERT INTO `postingan` (`id_post`, `id_user`, `post`, `gambar`) VALUES
-(30, 'ID001', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make', ''),
-(31, 'ID001', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia', ''),
-(32, 'ID002', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,', '');
 
 -- --------------------------------------------------------
 
@@ -133,7 +109,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `postingan`
 --
 ALTER TABLE `postingan`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user`
