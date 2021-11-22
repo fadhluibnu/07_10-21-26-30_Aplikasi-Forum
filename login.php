@@ -87,18 +87,55 @@ if (isset($_POST['daftar'])) {
     <title>Login - Forum</title>
 </head>
 
-<body>
-    <form action="" method="POST">
-        <input type="text" placeholder="Username" name="user">
-        <input type="password" placeholder="Password" name="pass">
-        <button type="submit" name="masuk">Masuk</button>
-    </form>
-    <hr>
-    <form action="" method="post">
-        <input type="text" placeholder="Usernmae" name="user_daftar">
-        <input type="password" placeholder="Password" name="pass_daftar">
-        <button type="submit" name="daftar">Daftar</button>
-    </form>
+<body class="bg-light d-flex" style="height:100vh;">
+    <div class="container m-auto">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="bg-white rounded p-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Login</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Daftar</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <form method="POST">
+                                <div class="mb-3">
+                                    <label for="Email" class="form-label">Username</label>
+                                    <input type="text" name="user" class="form-control" id="Email" placeholder="masukkan username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="pass" class="form-control" id="password" placeholder="masukkan password">
+                                </div>
+                                <button name="masuk" class="btn btn-primary" type="submit">
+                                    Masuk
+                                </button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <form method="POST">
+                                <div class="mb-3">
+                                    <label for="Email" class="form-label">Username</label>
+                                    <input type="text" name="user_daftar" class="form-control" id="Email" placeholder="masukkan username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="pass_daftar" class="form-control" id="password" placeholder="masukkan password">
+                                </div>
+                                <button name="daftar" class="btn btn-primary" type="submit">
+                                    Daftar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
