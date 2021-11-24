@@ -90,7 +90,7 @@ if (isset($_POST['daftar'])) {
 <body class="bg-light d-flex" style="height:100vh;">
     <div class="container m-auto">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-10 col-md-6">
                 <div class="bg-white rounded p-3">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
