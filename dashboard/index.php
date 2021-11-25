@@ -75,13 +75,18 @@ if (isset($_POST['cari'])) {
                         <?php
                         $getUser = $data['id_user'];
                         ?>
-                        <a href="ubah.php?id_post=<?php echo $data['id_post'] ?>" class="text-dark">Ubah</a>
-                        <a href="hapus.php?id_post=<?php echo $data['id_post'] ?>" class="text-dark">Hapus</a>
+                        <div class="d-flex align-items-center justify-content-between">
+
                         <?php
                         $query_user = mysqli_query($conn, "SELECT username FROM user WHERE id_user='$getUser'");
                         $user_result = mysqli_fetch_assoc($query_user);
                         ?>
                         <h4><?php echo $user_result['username'] ?></h4>
+                        <div class="d-flex">
+                        <a href="ubah.php?id_post=<?php echo $data['id_post'] ?>" class="badge bg-primary me-2">Ubah</a>
+                        <a href="hapus.php?id_post=<?php echo $data['id_post'] ?>" class="badge bg-danger">Hapus</a>
+                        </div>
+                        </div>
                         <hr size="4px" class="bg-outline-dark">
                         <p><?php echo $data['post'] ?></p>
                         <br>

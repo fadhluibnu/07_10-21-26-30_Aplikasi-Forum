@@ -44,14 +44,16 @@ if (isset($_POST['submit'])) {
         <div class="row justify-content-center">
             <div class="col-10 col-md-8">
                 <div class="bg-white rounded p-3">
-                    <a href="../dashboard/">Kembali</a>
+                    <a href="../dashboard/" class="nav-link">Kembali</a>
                     <form action="" method="post" class="d-flex flex-column ms-3 mt-3" enctype="multipart/form-data">
-                        <input name="id_user" type="text" value="<?php echo $id_user ?>">
-                        <label for="gambar">Gambar (optional)</label>
-                        <input type="file" name="gambar" id="gambar">
-                        <label for="post">Pesan</label>
-                        <textarea name="post" id="post" rows="10" placeholder="Masukkan pesan"></textarea>
-                        <button type="submit" name="submit" class="mt-2">Submit</button>
+                        <input name="id_user" type="hidden" value="<?php echo $id_user ?>">
+                        <label for="gambar" class="form-label">Gambar (optional)</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="gambar" name="gambar" >
+                        </div>
+                        <label for="post" class="form-label">Pesan</label>
+                        <textarea name="post" id="post" rows="10" placeholder="Masukkan pesan" class="form-control"></textarea>
+                        <button type="submit" name="submit" class="mt-2 btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
