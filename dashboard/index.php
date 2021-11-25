@@ -52,10 +52,10 @@ if (isset($_POST['cari'])) {
                         <a class="nav-link active" href="dashboard/">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../logout.php">Logout</a>
+                        <a class="nav-link" href="tambah.php">Tambah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tambah.php">Tambah</a>
+                        <a class="nav-link" href="../logout.php">Logout</a>
                     </li>
                 </ul>
                 <form class="d-flex" method="POST">
